@@ -1,0 +1,27 @@
+{
+  "name": "newicautomation",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@mobiscroll/cli": "^1.6.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.1.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.1",
+    "react-bootstrap-validation": "^0.1.11",
+    "react-calendar": "^3.4.0",
+    "react-datepicker": "^4.2.1",
+    "react-datetime-picker": "^3.4.0",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "^7.16.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "0.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
