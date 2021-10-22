@@ -21,6 +21,9 @@ function Projects(props) {
                         <Tab eventKey="Up Projects" title="Up Projects">
                             <NewProject/>
                         </Tab>
+                        <Tab eventKey="Task" title="Project Task's">
+                            <h1>New Task's</h1>
+                        </Tab>
                     </Tabs>
                 </Col>
             </Row>

@@ -1,43 +1,28 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import { Form, FormControl, Button, Table } from 'react-bootstrap';
+import { Tabs, Tab, Toast, Row, Col } from 'react-bootstrap';
+import UploadFile from "../components/UploadFile";
+import ShowFiles from "../components/ShowFiles";
 
-
-function Nas() {
-    const [uploadFile, setUploadFile] = useState();
-
-    const subir = (e) => {
-        console.log(e.target.files);
-        setUploadFile(e.target.files);
-    }
-    
-    const submitForm = (event) => {
-        event.preventDefault();
-        let configu = { headers: {
-            'Content-Type': 'multipart/form-data'
-        }}
-        const dataArray = new FormData();
-        dataArray.append("archivo", uploadFile[0]);
-        console.log(dataArray);
-        axios.post("http://192.168.100.199:8080/file/uploads", dataArray)
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+function Nas(props) {
+    const [proops, setproops] = useState(props.email);
 
     return (
-        <div className="App">
-            <form onSubmit={submitForm}>
-                <br />
-                <input type="file" onChange={subir} />
-                <br />
-                <input type="submit" />
-            </form>
-            <hr />
-            
+        <div >
+            <Row>
+                <Col>
+                    <Tabs defaultActiveKey="upload" id="uncontrolled-tab-example" className="mb-3">
+                        <Tab eventKey="upload" title="Upload Files">
+                            <UploadFile name={proops}/>
+                        </Tab>
+                        <Tab eventKey="show" title="Show Files">
+                            <ShowFiles name={proops}/>
+                        </Tab>
+                        <Tab eventKey="delete" title="Delete Files">
+                            <h1>Borrando</h1>
+                        </Tab>
+                    </Tabs>
+                </Col>
+            </Row>
         </div>
     );
 }

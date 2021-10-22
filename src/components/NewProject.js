@@ -8,12 +8,12 @@ function NewProject(props) {
     console.log(props);
     const [date, setdate] = useState(new Date());
     const [data, setdata] = useState({});
-    
+
     const changeNombre = (e) => {
         console.log(date);
-        
+
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(`http://192.168.100.199:8080/api/projects`, { date })
@@ -31,6 +31,30 @@ function NewProject(props) {
     return (
         <div>
             <Form className="d-flex" onSubmit={handleSubmit}>
+                <Row>
+                    <Col md>
+                        <h1>Nuevo Proyecto</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Form.Check
+                        inline
+                        label="This User"
+                        name="group1"
+                        type='radio'
+                        id={`inline-radio-1`}
+                    />
+                    <Form.Check
+                        inline
+                        label="2"
+                        name="group1"
+                        type='radio'
+                        id={`inline-radio-2`}
+                    />
+                </Row>
+
+
+
                 <DateTimePicker
                     onChange={setdate}
                     value={date}

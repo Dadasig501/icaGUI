@@ -8,16 +8,8 @@ function Editing(props) {
     console.log(props);
     const [rend, setrender] = useState(true);
     const [tick, setticket] = useState();
-    const [nombre, setnombre] = useState("New Project");
-    const [cliente, setcliente] = useState("New Cliente");
-    const [comentario, setcomentario] = useState("Insert Commit");
     const [prioridad, setprioridad] = useState();
-    const [avance, setavance] = useState();
-    const [asignacion, setasignacion] = useState();
-    const [fechaInicial, setfechaInicial] = useState();
-    const [estado, setestado] = useState();
     const [data, setdata] = useState({});
-
     const handleChange = (e) => {
         setticket(e.target.value);
         console.log(prioridad);
