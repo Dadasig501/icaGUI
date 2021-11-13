@@ -5,7 +5,7 @@ import { Form, FormControl, Button, Table } from 'react-bootstrap';
 
 function UploadFile(props) {
     const [uploadFile, setUploadFile] = useState();
-
+    const [folder, setfolder] = useState(props.name);
     const submitForm = (event) => {
         event.preventDefault();
         const dataArray = new FormData();
@@ -27,6 +27,7 @@ function UploadFile(props) {
         <div className="App">
             <div>
                 <Form onSubmit={submitForm}>
+                    <Form.Label></Form.Label>
                     <Form.Group controlId="formFileSm" className="mb-3">
                         <Form.Label>Small file input example</Form.Label>
                         <Form.Control type="file" size="sm" onChange={(e) => { setUploadFile(e.target.files) }} />

@@ -30,30 +30,8 @@ function NewProject(props) {
 
     return (
         <div>
-            <Form className="d-flex" onSubmit={handleSubmit}>
-                <Row>
-                    <Col md>
-                        <h1>Nuevo Proyecto</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Form.Check
-                        inline
-                        label="This User"
-                        name="group1"
-                        type='radio'
-                        id={`inline-radio-1`}
-                    />
-                    <Form.Check
-                        inline
-                        label="2"
-                        name="group1"
-                        type='radio'
-                        id={`inline-radio-2`}
-                    />
-                </Row>
-
-
+            <Form>
+               
 
                 <DateTimePicker
                     onChange={setdate}
@@ -67,7 +45,7 @@ function NewProject(props) {
                 <Button variant="outline-warning" type="submit">Send</Button>
             </Form>
 
-        </div>
+        </div >
     );
 }
 
