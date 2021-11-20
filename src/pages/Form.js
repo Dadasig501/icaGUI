@@ -4,7 +4,7 @@ import '../css/Form.css';
 import {Form, Button, Card } from 'react-bootstrap';
 import ImgPerfil from '../resources/img/PerfilICA.png';
 import Logo from '../resources/img/LogoICA.jpg';
-
+import api from '../models/api';
 
 class Formulario extends Component {
     state = {
@@ -28,7 +28,7 @@ class Formulario extends Component {
             password: this.state.password
         };
 
-        axios.post(`http://192.168.100.199:8080/api/logs`, { credentials })
+        axios.post(`http://192.168.0.19:8080/api/logs`, { credentials })
             .then(res => {
                 //console.log(res);
                 const datos = res.data;

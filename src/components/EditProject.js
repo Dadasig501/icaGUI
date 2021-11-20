@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, FormControl, Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 
+import api from '../models/api';
 
 
 function Editing(props) {
@@ -17,7 +18,7 @@ function Editing(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`http://192.168.100.199:8080/api/projects`, { tick })
+        axios.post(`http://192.168.0.19:8080/api/projects`, { tick })
             .then(res => {
                 console.log(res);
                 const datos = res.data.data;
@@ -34,7 +35,7 @@ function Editing(props) {
                 <Form className="d-flex" onSubmit={handleSubmit}>
                     <FormControl
                         type="number"
-                        placeholder="Search"
+                        placeholder="Insert Ticket"
                         className="mr-2"
                         aria-label="Search"
                         onChange={handleChange}

@@ -18,7 +18,7 @@ function Projects(props) {
                         <Tab eventKey="All Projects" title="All Projects">
                             <AllProjects/>
                         </Tab>
-                        <Tab eventKey="Up Projects" title="Up Projects">
+                        <Tab eventKey="Up Projects" title="Upload Projects">
                             <NewProject/>
                         </Tab>
                         <Tab eventKey="Task" title="Project Task's">

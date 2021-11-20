@@ -5,6 +5,8 @@ import './App.css';
 import Home from './pages/Home';
 import Logo from './resources/img/LogoICA.jpg';
 import ImgPerfil from './resources/img/PerfilICA.png';
+import api from './models/api.json';
+
 class App extends Component {
   state = {
     nombre:"",
@@ -23,12 +25,13 @@ class App extends Component {
     this.setState({ password: event.target.value });
   }
   handleSubmit = event => {
+    console.log(api);
     event.preventDefault();
     const credentials = {
       email: this.state.email,
       password: this.state.password
     };
-    axios.post(`http://192.168.100.199:8080/api/logs`, { credentials })
+    axios.post(`http://192.168.0.19:8080/api/logs`, { credentials })
       .then(res => {
         //console.log(res);
         const datos = res.data;

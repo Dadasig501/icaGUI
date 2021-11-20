@@ -6,6 +6,7 @@ import Logo from '../resources/img/LogoICA.jpg';
 import ImgPerfil from '../resources/img/PerfilICA.png';
 import axios from 'axios';
 import NavBar from '../components/Navbar';
+import api from '../models/api';
 
 function Formulario() {
     const [redirect, setredirect] = useState(false);
@@ -29,7 +30,7 @@ function Formulario() {
             password: password
         };
 
-        axios.post(`http://192.168.100.199:8080/api/logs`, { credentials })
+        axios.post(`http://192.168.0.19:8080/api/logs`, { credentials })
             .then(res => {
                 //console.log(res);
                 const datos = res.data;

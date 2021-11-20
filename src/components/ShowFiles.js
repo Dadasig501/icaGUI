@@ -1,67 +1,70 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Tab, Tabs, Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Form,Button, Table, Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Document, Page } from 'react-pdf';
 import c from '../resources/lenguaje_C.pdf';
 import ReactPDF from '@intelllex/react-pdf';
 import ProjectsTabs from "./ProjectsTabs";
+import api from '../models/api';
 
 function ShowFiles(props) {
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
+    
+    const [data, setdata] = useState([]);
 
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.get(`http://192.168.0.19:8080/file/uploads`)
+            .then(res => {
+                console.log('awa de uwu');
+                console.log(res);
+                const datos = res.data.data;
+                console.log("awa de uwu", datos);
+                setdata(datos);
+                console.log(data);
+            }).catch(err => {
+                alert(err);
+            });
     }
-
-    const renderCard = () => {
-        return (
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                    </Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                    <ListGroupItem>Cras justo odio</ListGroupItem>
-                    <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                    <ListGroupItem>Vestibulum at eros</ListGroupItem>
-                </ListGroup>
-                <Card.Body>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
-                </Card.Body>
-            </Card>
-        )
-    }
+    
     return (
-        <div >
-            <Row>
-                <Col>
-                    <Tabs defaultActiveKey="pdf" id="uncontrolled-tab-example" className="mb-3">
-                        <Tab eventKey="pdf" title="PDF">
-                            <h1>pdf</h1>
-                        </Tab>
-                        <Tab eventKey="exel" title="EXEL">
-                            <h1>Exels</h1>
-                        </Tab>
-                        <Tab eventKey="ppt" title="PPT">
-                            <h1>ppt</h1>
-                        </Tab>
-                        <Tab eventKey="imgages" title="IMAGES">
-                            <h1>{renderCard}</h1>
-                            
-                        </Tab>
-                        <Tab eventKey="music" title="MUSIC">
-                            <h1>music</h1>
-                            <ProjectsTabs/>
-                        </Tab>
-                    </Tabs>
-                </Col>
-            </Row>
+        <div className="d-grid gap-2">
+            <Col xs="auto" >
+                <Form className="d-flex" onSubmit={handleSubmit}>
+                    <Button variant="success" type="submit" size="lg">Refresh</Button>
+                </Form>
+                <Table striped bordered hover variant="dark" responsive ='sm'>
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Ticket</th>
+                            <th>Nombre</th>
+                            <th>Cliente</th>
+                            <th>Comentario</th>
+                            <th>Prioridad</th>
+                            <th>Avance</th>
+                            <th>Asignacion</th>
+                            <th>Fecha Inicial</th>
+                            <th>Fecha Final</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{data.map(data => <li>{data.id}</li>)}</td>
+                            <td>{data.map(data => <li>{data.ticket}</li>)}</td>
+                            <td>{data.map(data => <li>{data.nombre}</li>)}</td>
+                            <td>{data.map(data => <li>{data.cliente}</li>)}</td>
+                            <td>{data.map(data => <li>{data.comentario}</li>)}</td>
+                            <td>{data.map(data => <li>{data.prioridad}</li>)}</td>
+                            <td>{data.map(data => <li>{data.avance}</li>)}</td>
+                            <td>{data.map(data => <li>{data.asignacion}</li>)}</td>
+                            <td>{data.map(data => <li>{data.fechaInicial}</li>)}</td>
+                            <td>{data.map(data => <li>{data.fechaFin}</li>)}</td>
+                            <td>{data.map(data => <li>{data.estado}</li>)}</td>
+                        </tr>
+                    </tbody>
+                </Table>
+            </Col>
         </div>
     );
 }

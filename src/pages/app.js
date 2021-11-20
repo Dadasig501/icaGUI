@@ -11,6 +11,8 @@ import Formu from './pages/formu';
 */
 import Logo from './resources/img/LogoICA.jpg';
 import ImgPerfil from './resources/img/PerfilICA.png';
+import api from '../models/api';
+
 
 class App extends Component {
   
@@ -36,7 +38,7 @@ class App extends Component {
       password: this.state.password
     };
 
-    axios.post(`http://192.168.100.199:8080/api/logs`, { credentials })
+    axios.post(`http://192.168.0.19:8080/api/logs`, { credentials })
       .then(res => {
         //console.log(res);
         const datos = res.data;
@@ -47,7 +49,7 @@ class App extends Component {
           this.setState({pagina: true});
         }
       }).catch(err => {
-        alert(err);
+        alert(err + "404 servidor fuera de linea");
       });
 
   }
